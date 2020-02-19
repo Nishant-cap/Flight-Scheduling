@@ -24,7 +24,7 @@ public interface FlightService {
 	 * @throws InvalidFlightNameException
 	 * @throws SeatException
 	 **********************************************************************************************************/
-	public boolean addFlight(int flightNum, String flightName, int seat)
+	public boolean addFlight(Integer flightNum, String flightName, int seat)
 			throws IDException, InvalidFlightNameException, SeatException;
 	/*********************************************************************************************************
 	 * @method addScheduled
@@ -42,7 +42,7 @@ public interface FlightService {
 	 * @throws ValidateException
 	 **********************************************************************************************************/
 
-	public boolean addScheduled(int Id, int flightId, int seat, String src, String dest, LocalDateTime arr,
+	public boolean addScheduled(Integer Id, Integer flightId, Integer seat, String src, String dest, LocalDateTime arr,
 			long noOfhours) throws IDException, SeatException, InvalidAirportException, ValidateException;
 
 }

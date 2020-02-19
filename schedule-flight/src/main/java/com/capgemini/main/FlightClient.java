@@ -27,7 +27,7 @@ public class FlightClient {
 		do {
 			try {
 				
-				System.out.println("Enter FlightId");
+				System.out.println("Enter FlightId number");
 				String Id = Cgutil.scan.nextLine();
 				int id = Integer.parseInt(Id);
 				System.out.println("Enter Flight Name");
@@ -42,7 +42,7 @@ public class FlightClient {
 				System.out.println("-----------------------------------------------------------------------------");
 				
 				System.out.println("******************Enter Details for Schedule Flight**************************");
-				System.out.println("Enter schedule ID");
+				System.out.println("Enter schedule ID number");
 				String Scid = Cgutil.scan.nextLine();
 				int scid = Integer.parseInt(Scid);
 				System.out.println("Enter available seats");
@@ -64,15 +64,14 @@ public class FlightClient {
 
 				obj.addScheduled(scid, id, seat, src, dest, ltd, hour);
 
-				System.out.println("Success fully addded!");
 
 			} catch (IDException | SeatException | InvalidFlightNameException | InvalidAirportException
 					| ValidateException | DateTimeParseException e) {
-				System.out.println(e.getMessage());
+				System.err.println(e.getMessage());
 			}
-			System.out.println("Press y to continue: ");
+			System.err.println("Press y to continue and t to terminate");
 			opt = Cgutil.scan.nextLine();
-		} while (opt.equals("y") || opt.equals("exit"));
+		} while (opt.equals("y") || opt.equals("t"));
 
 	}
 

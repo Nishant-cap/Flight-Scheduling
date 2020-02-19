@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -28,7 +29,13 @@ import com.capgemini.flight.service.FlightServiceImpl;
  ****************************************************************************************************************/
 @TestInstance(Lifecycle.PER_CLASS)
 public class TestAddScheduled {
-	private static FlightService ser=new FlightServiceImpl();
+	private static FlightService ser;
+	
+	/************Before All method run before run all test****************************************************/
+	@BeforeAll 
+	public void beforeAll() {
+		ser = new FlightServiceImpl();
+	}
 
 	/*********************Test case for validate scheduled ID***********************************************/
 	@Test

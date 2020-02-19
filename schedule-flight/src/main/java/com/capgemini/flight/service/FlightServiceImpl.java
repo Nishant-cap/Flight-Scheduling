@@ -40,10 +40,10 @@ public class FlightServiceImpl implements FlightService {
 	 * @throws SeatException
 	 **********************************************************************************************************/
 	@Override
-	public boolean addFlight(int flightNum, String flightName, int seat)
+	public boolean addFlight(Integer flightNum, String flightName, int seat)
 			throws IDException, InvalidFlightNameException, SeatException {
 
-		if (flightNum < 1000 || flightNum > 1100 )
+		if (flightNum < 1000 || flightNum > 1100 || (!flightNum.toString().matches("^[1-9]{4}")))
 			throw new IDException("Flight ID must contain 4 digit number and connot starts with zero");
 
 		if ((flightName == null) || (flightName.isEmpty()))
@@ -76,12 +76,12 @@ public class FlightServiceImpl implements FlightService {
 	 * @throws ValidateException
 	 **********************************************************************************************************/
 	@Override
-	public boolean addScheduled(int Id, int flightId, int seat, String src, String dest, LocalDateTime arr,
+	public boolean addScheduled(Integer Id, Integer flightId, Integer seat, String src, String dest, LocalDateTime arr,
 			long noofhours) throws IDException, SeatException, InvalidAirportException, ValidateException {
 
-		if (Id < 2000 || Id > 2100)
+		if ( (!Id.toString().matches("^[1-9]{4}")) || Id < 2000 || Id > 2100)
 			throw new IDException("Scheduled Id must contain 4 digit and cannot start with zero");
-		if (seat < 0 || seat > 700)
+		if (seat < 0 || seat > 700 || seat.toString().matches("[1-9]{4}"))
 			throw new SeatException("Seat cannot be less than zero and greater than 700");
 		Flight flight = dao.viewFlight(flightId);
 		Airport srcAirport = dao.getAirport(src);

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -25,9 +26,14 @@ import com.capgemini.flight.service.FlightServiceImpl;
 @TestInstance(Lifecycle.PER_CLASS)
 public class TestAddFlight {
 
-	private static FlightService ser = new FlightServiceImpl();;
+	private static FlightService ser;
 
+	/************Before All method run before run all test****************************************************/
 	
+	@BeforeAll 
+	public void beforeAll() {
+		ser = new FlightServiceImpl();
+	}
 	/*********************Test case for validate flight ID***********************************************/
 	@Test
 	@DisplayName("Test validate for wrong Flight id")
